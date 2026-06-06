@@ -1,0 +1,17 @@
+# data.yaml — YOLOv10 dataset config for drone/bird detection
+# Verified class mapping (from actual label files):
+#   class 0 = drone   (DT images)
+#   class 1 = bird    (BT images)
+#
+# NOTE: The legacy data_loader.py had these reversed (0=Bird, 1=Drone)
+# which caused the "Drone → Bird 100%" classification bug.
+
+path: D:/Repos/LiceentaBogdan/Data
+train: train/images
+val: valid/images
+test: test/images
+
+nc: 2
+names:
+  0: drone
+  1: bird
