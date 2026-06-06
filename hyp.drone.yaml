@@ -1,0 +1,39 @@
+# hyp.drone.yaml — Phase 2.2 of FIX_PLAN
+# YOLOv10 hyperparameters tuned for 2-class drone/bird detection
+#
+# Key choices and rationale:
+#   cls: 0.3      — lowered from default 0.5 to force more careful class learning
+#   label_smoothing: 0.1 — CRITICAL: prevents "Bird 100%" overconfidence
+#   copy_paste: 0.1  — copies drone instances into bird-heavy images during training
+#   mixup: 0.15      — helps with class boundary learning
+#   scale: 0.9       — drones appear at many distances; large scale range important
+
+# Optimizer
+lr0: 0.01
+lrf: 0.01
+momentum: 0.937
+weight_decay: 0.0005
+warmup_epochs: 3.0
+warmup_momentum: 0.8
+warmup_bias_lr: 0.1
+
+# Loss weights
+box: 7.5
+cls: 0.3
+dfl: 1.5
+
+# Augmentation
+hsv_h: 0.015
+hsv_s: 0.7
+hsv_v: 0.4
+degrees: 5.0
+translate: 0.1
+scale: 0.9
+shear: 0.0
+perspective: 0.0
+flipud: 0.0
+fliplr: 0.5
+mosaic: 1.0
+mixup: 0.15
+copy_paste: 0.1
+label_smoothing: 0.1

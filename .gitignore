@@ -1,5 +1,6 @@
 # Data
-data/
+Data/
+datasets/
 
 # Python
 __pycache__/
