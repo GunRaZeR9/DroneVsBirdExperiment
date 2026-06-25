@@ -168,9 +168,11 @@ def main() -> None:
         task="detect",          # explicit — prevents ultralytics prepending runs/detect/
         project=args.project,
         name=args.name,
+        exist_ok=True,          # reuse runs/train/drone_v10_cpu — keep weights path stable
         workers=args.workers,
         cos_lr=True,
-        multi_scale=True,
+        multi_scale=False,      # OFF: prevents 1x1 feature maps that crash BatchNorm
+                                #      on the size-1 last batch (16761 % 8 == 1)
         # Key fixes from FIX_PLAN:
         label_smoothing=0.1,   # prevents Bird 100% overconfidence
         copy_paste=0.1,        # copies drone crops into bird-heavy images
